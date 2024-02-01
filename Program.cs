@@ -45,18 +45,15 @@ namespace Sestek3
             {
                 return new RationalNumber((num1.numerator * num2.denominator) + (num2.numerator * num1.denominator), (num1.denominator * num2.denominator));
             }
-
             public static RationalNumber Substract(RationalNumber num1, RationalNumber num2)
             {
                 return new RationalNumber((num1.numerator * num2.denominator) - (num2.numerator * num1.denominator), num1.denominator * num2.denominator);
             }
-
             public static RationalNumber Multiply(RationalNumber num1, RationalNumber num2)
             {
                 RationalNumber result = new RationalNumber(num1.numerator * num2.numerator, num1.denominator * num2.denominator);
                 return Simplification(result, GCD(result.numerator, result.denominator));
             }
-
             public static RationalNumber Divide(RationalNumber num1, RationalNumber num2)
             {
                 RationalNumber result = new RationalNumber((num1.numerator * num2.denominator), (num1.denominator * num2.numerator));
@@ -67,12 +64,10 @@ namespace Sestek3
             {
                 return new RationalNumber((num1.numerator * num2.denominator) + (num2.numerator * num1.denominator), (num1.denominator * num2.denominator));
             }
-
             public static RationalNumber operator -(RationalNumber num1, RationalNumber num2)
             {
                 return new RationalNumber((num1.numerator * num2.denominator) - (num2.numerator * num1.denominator), num1.denominator * num2.denominator);
             }
-
             public static RationalNumber operator *(RationalNumber num1, RationalNumber num2)
             {
                 RationalNumber result = new RationalNumber(num1.numerator * num2.numerator, num1.denominator * num2.denominator);
@@ -83,6 +78,45 @@ namespace Sestek3
                 RationalNumber result = new RationalNumber((num1.numerator * num2.denominator), (num1.denominator * num2.numerator));
                 return Simplification(result, GCD(result.numerator, result.denominator));
             }
+
+            public static RationalNumber operator +(RationalNumber num1, int num2)
+            {
+                return new RationalNumber(num1.numerator + (num2* num1.denominator), num1.denominator);
+            }
+            public static RationalNumber operator -(RationalNumber num1, int num2)
+            {
+                return new RationalNumber(num1.numerator - (num2 * num1.denominator), num1.denominator);
+            }
+            public static RationalNumber operator *(RationalNumber num1, int num2)
+            {
+                RationalNumber result = new RationalNumber(num1.numerator * num2, num1.denominator);
+                return Simplification(result, GCD(result.numerator, result.denominator));
+            }
+            public static RationalNumber operator /(RationalNumber num1, int num2)
+            {
+                RationalNumber result = new RationalNumber(num1.numerator, (num1.denominator * num2));
+                return Simplification(result, GCD(result.numerator, result.denominator));
+            }
+
+            public static RationalNumber operator +(int num1, RationalNumber num2)
+            {
+                return new RationalNumber((num1* num2.denominator)+ num2.numerator, num2.denominator);
+            }
+            public static RationalNumber operator -(int num1, RationalNumber num2)
+            {
+                return new RationalNumber((num1 * num2.denominator) - num2.numerator, num2.denominator);
+            }
+            public static RationalNumber operator *(int num1, RationalNumber num2)
+            {
+                RationalNumber result = new RationalNumber(num1*num2.numerator , num2.denominator);
+                return Simplification(result, GCD(result.numerator, result.denominator));
+            }
+            public static RationalNumber operator /(int num1, RationalNumber num2)
+            {
+                RationalNumber result = new RationalNumber(num1* num2.denominator, num2.numerator);
+                return Simplification(result, GCD(result.numerator, result.denominator));
+            }
+
 
         }
 
@@ -101,17 +135,26 @@ namespace Sestek3
             //Console.WriteLine("Multiply Result:" + numMulti);
             //Console.WriteLine("Divide Result:" + numDiv);
          
-            var addition = num1 + num2;
-            var subtractition = num1 - num2;
-            var multi = num1 * num2;
-            var divide = num1 / num2;
+            //var addition = num1 + num2;
+            //var subtractition = num1 - num2;
+            //var multi = num1 * num2;
+            //var divide = num1 / num2;
+
+            //var addition = num1 + 2;
+            //var subtractition = num1 - 2;
+            //var multi = num1 * 2;
+            //var divide = num1 / 8;
+
+            var addition = 2 + num2;
+            var subtractition = 2 - num2;
+            var multi = 2 * num2;
+            var divide = 2 / num2;
 
             Console.WriteLine(addition);
             Console.WriteLine(subtractition);
             Console.WriteLine(multi);
             Console.WriteLine(divide);
 
-            //  var num4 = num1 + 8
             Console.ReadKey();
         }
     }
