@@ -17,7 +17,6 @@ namespace Sestek3
                 this.denominator = denominator/value;
 
             }
-
             static int GCD(int num1, int num2)
             {
                 int Remainder;
@@ -44,8 +43,30 @@ namespace Sestek3
                 return this.numerator + "/" + this.denominator;
             }
 
-            int Divide() { return 0; }
-            int Multiply() { return 0;}
+           public static RationalNumber Divide(RationalNumber num1, RationalNumber num2) {
+
+                RationalNumber result = new RationalNumber();
+                result.numerator = num1.numerator * num2.denominator;
+                result.denominator = num1.denominator * num2.numerator;
+
+                int value = GCD(result.numerator, result.denominator);
+
+                result.numerator = result.numerator / value;
+                result.denominator = result.denominator / value;
+                return result;
+            }
+            public static RationalNumber Multiply(RationalNumber num1, RationalNumber num2) {
+
+                RationalNumber result = new RationalNumber();
+                result.numerator = num1.numerator*num2.numerator;
+                result.denominator = num1.denominator*num2.denominator;
+
+                int value = GCD(result.numerator, result.denominator);
+
+                result.numerator = result.numerator/value;
+                result.denominator = result.denominator/value;  
+                return result;
+            }
             int Substract() { return 0;}
 
         }
@@ -58,6 +79,9 @@ namespace Sestek3
 
 
             Console.WriteLine("Result:" + num3);
+
+            // var addition = num1 + num2;
+          //  var num4 = num1 + 8
 
       
 
