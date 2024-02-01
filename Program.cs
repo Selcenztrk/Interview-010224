@@ -16,6 +16,10 @@ namespace Sestek3
                 this.numerator = numerator / value;
                 this.denominator = denominator / value;
             }
+            public override string ToString()
+            {
+                return this.numerator + "/" + this.denominator;
+            }
 
             static int GCD(int num1, int num2)
             {
@@ -37,21 +41,14 @@ namespace Sestek3
                 return num;
             }
 
-            public override string ToString()
-            {
-                return this.numerator + "/" + this.denominator;
-            }
-
             public static RationalNumber Add(RationalNumber num1, RationalNumber num2)
             {
-                RationalNumber result = new RationalNumber((num1.numerator * num2.denominator) + (num2.numerator * num1.denominator), (num1.denominator * num2.denominator));
-                return result;
+                return new RationalNumber((num1.numerator * num2.denominator) + (num2.numerator * num1.denominator), (num1.denominator * num2.denominator));
             }
 
             public static RationalNumber Substract(RationalNumber num1, RationalNumber num2)
             {
                 return new RationalNumber((num1.numerator * num2.denominator) - (num2.numerator * num1.denominator), num1.denominator * num2.denominator);
-                //return result;
             }
 
             public static RationalNumber Multiply(RationalNumber num1, RationalNumber num2)
@@ -74,11 +71,10 @@ namespace Sestek3
 
             var num3 = RationalNumber.Substract(num1, num2);
 
-
             Console.WriteLine("Result:" + num3);
             Console.ReadLine();
 
-            // RationalNumber addition = num1 + num2;
+            // var addition = num1 + num2;
 
             // Console.WriteLine(addition);
             //  var num4 = num1 + 8
