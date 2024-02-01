@@ -68,6 +68,11 @@ namespace Sestek3
                 return new RationalNumber((num1.numerator * num2.denominator) + (num2.numerator * num1.denominator), (num1.denominator * num2.denominator));
             }
 
+            public static RationalNumber operator -(RationalNumber num1, RationalNumber num2)
+            {
+                return new RationalNumber((num1.numerator * num2.denominator) - (num2.numerator * num1.denominator), num1.denominator * num2.denominator);
+            }
+
         }
 
         static void Main(string[] args)
@@ -86,8 +91,10 @@ namespace Sestek3
             //Console.WriteLine("Divide Result:" + numDiv);
          
             var addition = num1 + num2;
+            var subtractition = num1 - num2;
 
-            Console.WriteLine(addition.ToString());
+            Console.WriteLine(addition);
+            Console.WriteLine(subtractition);
 
             //  var num4 = num1 + 8
             Console.ReadKey();
