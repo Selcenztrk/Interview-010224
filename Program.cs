@@ -41,15 +41,9 @@ namespace Sestek3
                 return result;
             }
 
-            public static RationalNumber Divide(RationalNumber num1, RationalNumber num2)
+            public static RationalNumber Substract(RationalNumber num1, RationalNumber num2)
             {
-                RationalNumber result = new RationalNumber((num1.numerator * num2.denominator), (num1.denominator * num2.numerator));
-
-                int value = GCD(result.numerator, result.denominator);
-
-                result.numerator = result.numerator / value;
-                result.denominator = result.denominator / value;
-  
+                RationalNumber result = new RationalNumber((num1.numerator * num2.denominator) - (num2.numerator * num1.denominator), num1.denominator * num2.denominator);
                 return result;
             }
 
@@ -64,13 +58,19 @@ namespace Sestek3
                 return result;
             }
 
-            public static RationalNumber Substract(RationalNumber num1, RationalNumber num2)
+            public static RationalNumber Divide(RationalNumber num1, RationalNumber num2)
             {
-                RationalNumber result = new RationalNumber((num1.numerator * num2.denominator) - (num2.numerator * num1.denominator), num1.denominator * num2.denominator);
+                RationalNumber result = new RationalNumber((num1.numerator * num2.denominator), (num1.denominator * num2.numerator));
+
+                int value = GCD(result.numerator, result.denominator);
+
+                result.numerator = result.numerator / value;
+                result.denominator = result.denominator / value;
+
                 return result;
             }
-
         }
+
         static void Main(string[] args)
         {
             RationalNumber num1 = new RationalNumber(4, 3);
