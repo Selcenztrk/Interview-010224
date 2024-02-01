@@ -30,6 +30,13 @@ namespace Sestek3
                 return num1;
             }
 
+            static RationalNumber Simplification(RationalNumber num, int value)
+            {
+                num.numerator = num.numerator / value;
+                num.denominator = num.denominator / value;
+                return num;
+            }
+
             public override string ToString()
             {
                 return this.numerator + "/" + this.denominator;
@@ -43,31 +50,20 @@ namespace Sestek3
 
             public static RationalNumber Substract(RationalNumber num1, RationalNumber num2)
             {
-                RationalNumber result = new RationalNumber((num1.numerator * num2.denominator) - (num2.numerator * num1.denominator), num1.denominator * num2.denominator);
-                return result;
+                return new RationalNumber((num1.numerator * num2.denominator) - (num2.numerator * num1.denominator), num1.denominator * num2.denominator);
+                //return result;
             }
 
             public static RationalNumber Multiply(RationalNumber num1, RationalNumber num2)
             {
                 RationalNumber result = new RationalNumber(num1.numerator * num2.numerator, num1.denominator * num2.denominator);
-
-                int value = GCD(result.numerator, result.denominator);
-
-                result.numerator = result.numerator / value;
-                result.denominator = result.denominator / value;
-                return result;
+                return Simplification(result, GCD(result.numerator, result.denominator));
             }
 
             public static RationalNumber Divide(RationalNumber num1, RationalNumber num2)
             {
                 RationalNumber result = new RationalNumber((num1.numerator * num2.denominator), (num1.denominator * num2.numerator));
-
-                int value = GCD(result.numerator, result.denominator);
-
-                result.numerator = result.numerator / value;
-                result.denominator = result.denominator / value;
-
-                return result;
+                return Simplification(result, GCD(result.numerator, result.denominator));
             }
         }
 
@@ -86,12 +82,6 @@ namespace Sestek3
 
             // Console.WriteLine(addition);
             //  var num4 = num1 + 8
-
-
-
-
-
-
         }
     }
 }
