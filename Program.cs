@@ -62,6 +62,12 @@ namespace Sestek3
                 RationalNumber result = new RationalNumber((num1.numerator * num2.denominator), (num1.denominator * num2.numerator));
                 return Simplification(result, GCD(result.numerator, result.denominator));
             }
+
+            public static RationalNumber operator +(RationalNumber num1, RationalNumber num2)
+            {
+                return new RationalNumber((num1.numerator * num2.denominator) + (num2.numerator * num1.denominator), (num1.denominator * num2.denominator));
+            }
+
         }
 
         static void Main(string[] args)
@@ -69,15 +75,22 @@ namespace Sestek3
             RationalNumber num1 = new RationalNumber(4, 3);
             RationalNumber num2 = new RationalNumber(6, 2);
 
-            var num3 = RationalNumber.Substract(num1, num2);
+            //var numAdd = RationalNumber.Add(num1, num2);
+            //var numSubs = RationalNumber.Substract(num1, num2);
+            //var numMulti = RationalNumber.Multiply(num1, num2);
+            //var numDiv = RationalNumber.Divide(num1, num2);
 
-            Console.WriteLine("Result:" + num3);
-            Console.ReadLine();
+            //Console.WriteLine("Add Result:" + numAdd);
+            //Console.WriteLine("Sub Result:" + numSubs);
+            //Console.WriteLine("Multiply Result:" + numMulti);
+            //Console.WriteLine("Divide Result:" + numDiv);
+         
+            var addition = num1 + num2;
 
-            // var addition = num1 + num2;
+            Console.WriteLine(addition.ToString());
 
-            // Console.WriteLine(addition);
             //  var num4 = num1 + 8
+            Console.ReadKey();
         }
     }
 }
