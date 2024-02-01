@@ -67,7 +67,13 @@ namespace Sestek3
                 result.denominator = result.denominator/value;  
                 return result;
             }
-            int Substract() { return 0;}
+            public static RationalNumber Substract(RationalNumber num1, RationalNumber num2)
+            {
+                RationalNumber result = new RationalNumber();
+                result.numerator = (num1.numerator * num2.denominator) - (num2.numerator * num1.denominator);
+                result.denominator = num1.denominator * num2.denominator;
+                return result;
+            }
 
         }
         static void Main(string[] args)
@@ -75,12 +81,13 @@ namespace Sestek3
            RationalNumber num1 = new RationalNumber(4,3);
            RationalNumber num2 = new RationalNumber(6,2);
 
-            var num3 = RationalNumber.Add(num1, num2);
+           var num3 = RationalNumber.Substract(num1, num2);
 
 
-            Console.WriteLine("Result:" + num3);
+           Console.WriteLine("Result:" + num3);
+            Console.ReadLine();
 
-            // var addition = num1 + num2;
+          // var addition = num1 + num2;
           //  var num4 = num1 + 8
 
       
